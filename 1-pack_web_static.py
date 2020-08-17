@@ -3,6 +3,7 @@
 This file will help set up the web static stuff with a .tgz archive
 """
 
+
 def do_pack():
     """ This sets up the tgz """
     from datetime import datetime
