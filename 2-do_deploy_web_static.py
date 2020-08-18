@@ -4,12 +4,15 @@ This file will help set up the web static stuff with a .tgz archive
 """
 from fabric.api import run, put
 from fabric.state import env
+from os.path import isfile
 env.hosts = ['34.75.100.36', '54.159.26.151']
 
 
 def do_deploy(archive_path):
     """ This sets up the tgz """
     try:
+        if not isfile(archive_path):
+            return False
         thingy = archive_path.split("/")[1]
         thingy2 = thingy.split(".")[0]
         run("mkdir -p /data/web_static/releases/{}".format(thingy2))
@@ -20,5 +23,6 @@ def do_deploy(archive_path):
         run("rm /data/web_static/current")
         run("ln -sf /data/web_static/releases/{} /data/web_static/current".
             format(thingy2))
+        return True
     except:
-        return None
+        return False
