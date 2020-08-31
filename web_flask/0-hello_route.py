@@ -6,8 +6,10 @@ First Flask script
 
 from web_flask import app
 
+
 @app.route('/', strict_slashes=False)
 def chicken():
+    """ This is not a chicken """
     return 'Hello HBNB!'
 
 if __name__ == '__main__':
