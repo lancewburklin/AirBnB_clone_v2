@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route('/', strict_slashes=False)
 def chicken():
     """ More chicken stuff I guess """
-    return "Hello HBNB"
+    return "Hello HBNB!"
 
 
 @app.route('/hbnb', strict_slashes=False)
