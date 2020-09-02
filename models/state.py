@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ State Module for HBNB project """
 from models.base_model import BaseModel, Base
+from models.city import City
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, String
 
@@ -20,7 +21,7 @@ class State(BaseModel, Base):
         fs = FileStorage.all(City)
         city_list = []
         for key, value in fs.items():
-            if value.place_id in value and self.id == value.state_id:
+            if type(value) == City and self.id == value.state_id:
                 '''Append City instances maybe fucked up here!!!'''
                 city_list.append(value)
         return city_list
