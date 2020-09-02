@@ -38,7 +38,10 @@ class DBStorage:
                 'Review': Review
             }
         if cls is not None and cls != "":
-            the_type = types.get(cls)
+            if (type(cls) == str):
+                the_type = types.get(str(cls))
+            else:
+                the_type = cls
             result = self.__session.query(the_type).all()
         else:
             result = self.__session.query(State).all()
@@ -75,3 +78,6 @@ class DBStorage:
         sesh_thing = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(sesh_thing)
         self.__session = Session()
+
+    def close(self):
+        self.__session.close()
