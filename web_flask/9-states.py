@@ -14,7 +14,7 @@ app = Flask(__name__)
 def list_states(id=None):
     """ Lists all the states or State with ID """
     states = storage.all(State)
-    if (id != None):
+    if (id is not None):
         thingy = "State." + str(id)
         new_state = states.get(thingy)
         if new_state:
